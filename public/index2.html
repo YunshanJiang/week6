@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>project1</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+     <!-- Plugin CSS -->
+  <link href="css/vanilla-calendar.min.css" rel="stylesheet">
+  <!-- Plugin JS -->
+  <script src="js/vanilla-calendar.min.js" defer></script>
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+   
+    <meta charset="utf-8" />
+    
+  </head>
+  
+  <body>
+
+    <script>
+			document.addEventListener('DOMContentLoaded', () => {
+				calendar = new VanillaCalendar('.vanilla-calendar', {actions: {
+                clickDay(e, dates) {
+                    $("#date").text(dates);
+                    year = dates[0].substring(0,4);
+                    month = dates[0].substring(5,7);
+                    day = dates[0].substring(8,10);
+                    date.setYear(year);
+                    date.setMonth(parseInt(month) - 1);
+                    date.setDate(day);
+                    stringDate = $("#date").text();
+                    loadData();
+                    getweatherData();
+                },
+                },});
+				calendar.init();
+			});
+		</script>
+      <section id="title">
+          <p class="titleText">Calendar</p>
+          <p id="weatherText">weather</p>
+          <div id="topMiddleDate">
+            
+          <a id="leftArrow" class="arrow"><img  src="resource/arrowLeft.png"/></a>
+          <p id="date"></p>
+          <a id="rightArrow" class="arrow"><img  src="resource/arrowRight.png"/></a>
+          </div>
+         
+          <button id="showCbutton">show Calendar</button>
+          
+          <div>
+          <div style="display: none;" class="vanilla-calendar">
+          </div>
+          </div>
+      </section>
+     
+
+      <section id="middle">
+           
+     
+         <div class="middleImg">
+         </div>
+      </section>
+      
+      
+     <section id="bottom">
+         <div id="bottomText">
+          <script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
+         <small id="quote"><i><a href="/quote_of_the_day" target="_blank" rel="nofollow">more Quotes</a></i></small>
+         </div>
+      </section>
+      
+
+      
+      <script>
+       
+         
+          
+       $( "#showCbutton").click(function () {
+            
+            if ( $( ".vanilla-calendar" ).is( ":hidden" ) ) {
+              
+              $( ".vanilla-calendar" ).slideDown( "slow" );
+            } else {
+              $( ".vanilla-calendar" ).slideUp("slow");
+             
+            }
+          });
+         
+          $( "#rightArrow").click(function () {
+           
+           
+          date.setDate(date.getDate() + 1);
+          setDate();
+          loadData();
+          getweatherData();
+          });
+
+          $( "#leftArrow").click(function () {
+           
+           
+           date.setDate(date.getDate() - 1);
+           setDate();
+           loadData();
+           getweatherData();
+           });
+
+      </script>
+      <main>
+      </main>
+      <script src="./js/sketch2.js"></script>
+  </body>
+</html>

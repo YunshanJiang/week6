@@ -1,0 +1,31 @@
+{
+    "dateData": [
+        {
+            "year": "2022",
+            "month": "09",
+            "day": "18",
+            "imgPath": [
+                "resource/p1.png",
+                "resource/p2.png",
+                "resource/p3.png"
+            ]
+        },
+        {
+            "year": "2022",
+            "month": "09",
+            "day": "19",
+            "imgPath": [
+                "resource/p1.png",
+                "resource/p2.png"
+            ]
+        },
+        {
+            "year": "2022",
+            "month": "09",
+            "day": "20",
+            "imgPath": [
+                "resource/p1.png"
+            ]
+        }
+    ]
+}

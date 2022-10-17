@@ -1,3 +1,8 @@
-let a = 3;
-let b = 4;
-console.log(a);
+let express = require('express');
+let app = express();
+
+app.use('/', express.static('public'));
+
+app.listen('3000', ()=>{
+    console.log("test website");
+});

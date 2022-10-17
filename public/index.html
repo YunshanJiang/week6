@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>project1</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta charset="utf-8" />
+  <script src="js/mainPage.js"></script>
+</head>
+
+<body style="display: flex; align-items: center;">
+
+  <section id="loginPageMain">
+    <header>
+      Calendar
+    </header>
+    <form>
+      <div style="grid-area: labelDiv;">
+        <label for="Uname">User Name:</label><br><br>
+        <label for="Password">Password:</label><br><br>
+        <label style="display: none;" for="Re-enter Password">Re-enter Password:</label>
+      </div>
+      <div style="grid-area: inputDiv;">
+
+        <input type="text" id="Uname" name="User Name"><br><br>
+
+        <input type="password" id="Password" name="Password"><br><br>
+        <input style="display: none;" type="text" id="Re-enter Password" name="Re-enter Password">
+      </div>
+
+      <input onclick="checkAccount()" type="button" style="grid-area: input1; margin-top: 20px;" value="Log In">
+      <input style="grid-area: input2; margin-top: 20px;" type="submit" value="Sign Up">
+    </form>
+
+  </section>
+  <script>
+    function checkAccount() {
+      fetch('https://yunshanjiang.github.io/Connection-Lab-project-one/data/account.json')
+        .then(response => response.json())
+        .then(data => {
+          for (let i = 0; i < data.users.length; i++) {
+            let Uname = $("#Uname").val();
+            let UnamePassword = $("#Password").val();
+            if (Uname == data.users[i].username &&
+              UnamePassword == data.users[i].password) {
+              loadmainPage();
+              return;
+            }
+          }
+          window.alert("username or password is wrong!");
+        })
+        .catch(function (e) {
+          console.log(e);
+        });
+    }
+    function loadmainPage() {
+
+      let Uname = $("#Uname").val();
+      localStorage.setItem("Uname", Uname);
+      window.open("index2.html");
+
+    }
+  </script>
+  <main>
+  </main>
+  <script src="./js/sketch.js"></script>
+  <script>
+
+    $(window).on('resize', function () {
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      $("#defaultCanvas0").css("width", width);
+      $("#defaultCanvas0").css("height", height);
+    });
+
+   
+  </script>
+</body>
+
+</html>
